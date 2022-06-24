@@ -11,7 +11,7 @@ const useScript = (url : string, id :string | null) => {
     useEffect(() => {
 
         if (url && !isScriptAlreadyIncluded(url)){
-
+ 
             const script = document.createElement('script');
 
             script.src = url;
@@ -23,9 +23,9 @@ const useScript = (url : string, id :string | null) => {
 
             document.body.appendChild(script);
 
-            return () => {
+            /*return () => {
                 document.body.removeChild(script);
-            }
+            }*/
         }
     }, [url, id]);
 
