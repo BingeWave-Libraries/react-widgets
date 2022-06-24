@@ -3,6 +3,8 @@ const autoprefixer = require('autoprefixer');
 import { terser } from 'rollup-plugin-terser'
 import babel from '@rollup/plugin-babel';
 import sourcemaps from "rollup-plugin-sourcemaps";
+import resolve from '@rollup/plugin-node-resolve'
+
 
 // the entry point for the library
 const input = 'src/index.js'
@@ -45,8 +47,7 @@ MODE.map((m) => {
                 plugins: ['@babel/transform-runtime'],
                 babelHelpers: 'runtime'
             }),
-            // this adds sourcemaps
-            sourcemaps(),
+            resolve(),
             // this adds support for styles
             styles({
                 postcss: {

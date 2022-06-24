@@ -1,6 +1,9 @@
-import VideoConferencing from "components/VideoConferencing"
-import Livestreaming from "components/Livestreaming"
-import Broadcasting from "components/Broadcasting"
-import Widgets from "util/Widgets"
+
+import { VideoConferencing } from "./components"
+import { Livestreaming } from "./components"
+import { Broadcasting } from "./components"
+
+import Widgets from "./util"
+
 
 export default {VideoConferencing, Livestreaming, Broadcasting, Widgets}
