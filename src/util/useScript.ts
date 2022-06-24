@@ -8,9 +8,9 @@ function isScriptAlreadyIncluded(src: string) {
 }
 
 const useScript = (url : string, id :string | null) => {
-    let callback = useEffect(() => {
+    useEffect(() => {
 
-        if (!isScriptAlreadyIncluded(url)){
+        if (url && !isScriptAlreadyIncluded(url)){
 
             const script = document.createElement('script');
 
@@ -27,9 +27,7 @@ const useScript = (url : string, id :string | null) => {
                 document.body.removeChild(script);
             }
         }
-    }, [url]);
-
-    return callback;
+    }, [url, id]);
 
 };
 
