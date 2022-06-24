@@ -1,66 +1,42 @@
-import styles from "rollup-plugin-styles";
-const autoprefixer = require('autoprefixer');
-import { terser } from 'rollup-plugin-terser'
-import babel from '@rollup/plugin-babel';
-import sourcemaps from "rollup-plugin-sourcemaps";
-import resolve from '@rollup/plugin-node-resolve'
+import resolve from '@rollup/plugin-node-resolve';
+import commonjs from '@rollup/plugin-commonjs';
+import typescript from '@rollup/plugin-typescript';
+import { terser } from 'rollup-plugin-terser';
+import external from 'rollup-plugin-peer-deps-external';
+import postcss from 'rollup-plugin-postcss';
+import dts from 'rollup-plugin-dts';
 
-
-// the entry point for the library
-const input = 'src/index.js'
-
-// 
-var MODE = [
-  {
-    fomart: 'cjs'
-  },
-  {
-    fomart: 'esm'
-  },
-  {
-    fomart: 'umd'
-  }
-]
-
-
-
-
-var config = []
-
-
-MODE.map((m) => {
-    var conf = {
-        input: input,
-        output: {
-            // then name of your package
-            name: "bingewage-react-widgets",
-            file: `dist/index.${m.fomart}.js`,
-            format: m.fomart,
-            exports: "auto"
-        },
-        // this externelizes react to prevent rollup from compiling it
-        external: ["react", /@babel\/runtime/],
-        plugins: [
-            // these are babel comfigurations
-            babel({
-                exclude: 'node_modules/**',
-                plugins: ['@babel/transform-runtime'],
-                babelHelpers: 'runtime'
-            }),
-            resolve(),
-            // this adds support for styles
-            styles({
-                postcss: {
-                    plugins: [
-                        autoprefixer()
-                    ]
-                }
-            })
-        ]
-    }
-    config.push(conf)
-})
+const packageJson = require('./package.json');
 
 export default [
-  ...config,
+    {
+        input: 'src/index.ts',
+        output: [
+            {
+                file: packageJson.main,
+                format: 'cjs',
+                sourcemap: true,
+                name: 'bingewave-react-widgets'
+            },
+            {
+                file: packageJson.module,
+                format: 'esm',
+                sourcemap: true
+            }
+        ],
+        plugins: [
+            external(),
+            resolve(),
+            commonjs(),
+            typescript({ tsconfig: './tsconfig.json' }),
+            postcss(),
+            terser()
+        ],
+    },
+    {
+        input: 'dist/esm/types/index.d.ts',
+        output: [{ file: 'dist/index.d.ts', format: "esm" }],
+        external: [/\.css$/],
+        plugins: [dts()],
+    },
 ]

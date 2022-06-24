@@ -1,17 +1,17 @@
 import { useEffect } from 'react';
 
-function isScriptAlreadyIncluded(src) {
+function isScriptAlreadyIncluded(src: string) {
     var scripts = document.getElementsByTagName("script");
     for (var i = 0; i < scripts.length; i++)
         if (scripts[i].getAttribute('src') == src) return true;
     return false;
 }
 
-const useScript = (url, id) => {
+const useScript = (url : string, id :string | null) => {
     let callback = useEffect(() => {
 
         if (!isScriptAlreadyIncluded(url)){
-            console.log("Loading");
+
             const script = document.createElement('script');
 
             script.src = url;
@@ -24,7 +24,6 @@ const useScript = (url, id) => {
             document.body.appendChild(script);
 
             return () => {
-                console.log("Removing");
                 document.body.removeChild(script);
             }
         }
