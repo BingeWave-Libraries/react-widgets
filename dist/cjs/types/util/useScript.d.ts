@@ -1,2 +1,2 @@
-declare const useScript: (url: string, id: string | null) => void;
+declare const useScript: (url: string | null, id: string | null) => void;
 export default useScript;

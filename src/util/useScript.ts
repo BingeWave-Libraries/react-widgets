@@ -7,7 +7,8 @@ function isScriptAlreadyIncluded(src: string) {
     return false;
 }
 
-const useScript = (url : string, id :string | null) => {
+const useScript = (url : string | null, id :string | null) => {
+
     useEffect(() => {
 
         if (url && !isScriptAlreadyIncluded(url)){

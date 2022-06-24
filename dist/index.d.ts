@@ -1,5 +1,10 @@
 /// <reference types="react" />
-declare const VideoConferencing: (id: string, auth_token: string | null) => JSX.Element;
+interface WidgetOptions {
+    id: string;
+    auth_token: string | null;
+}
+
+declare const VideoConferencing: ({ id, auth_token }: WidgetOptions) => JSX.Element;
 
 declare const Livestreaming: (id: string, auth_token: string | null) => JSX.Element;
 
