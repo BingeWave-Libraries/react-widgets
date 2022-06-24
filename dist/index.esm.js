@@ -1,16 +1,13 @@
 import VideoConferencing from 'components/VideoConferencing';
 import Livestreaming from 'components/Livestreaming';
 import Broadcasting from 'components/Broadcasting';
+import Widgets from 'util/Widgets';
 
-var returnLibrary = function returnLibrary() {
-  return {
-    VideoConferencing: VideoConferencing,
-    Broadcasting: Broadcasting,
-    Livestreaming: Livestreaming // you can add here other components that you want to export
-
-  };
+var index = {
+  VideoConferencing: VideoConferencing,
+  Livestreaming: Livestreaming,
+  Broadcasting: Broadcasting,
+  Widgets: Widgets
 };
-
-var index = returnLibrary();
 
 export { index as default };
