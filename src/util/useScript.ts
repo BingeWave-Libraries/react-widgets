@@ -7,26 +7,28 @@ function isScriptAlreadyIncluded(src: string) {
     return false;
 }
 
-const useScript = (url: string | null, id: string | null) => {
+const useScript = (url : string | null, id :string | null) => {
 
-    if (url && !isScriptAlreadyIncluded(url)) {
+    useEffect(() => {
 
-        const script = document.createElement('script');
+        if (url && !isScriptAlreadyIncluded(url)){
+ 
+            const script = document.createElement('script');
 
-        script.src = url;
-        script.async = true;
+            script.src = url;
+            script.async = true;
 
-        if (id) {
-            script.id = id;
+            if(id) {
+                script.id = id;
+            }
+
+            document.body.appendChild(script);
+
+            /*return () => {
+                document.body.removeChild(script);
+            }*/
         }
-
-        document.body.appendChild(script);
-
-        /*return () => {
-            document.body.removeChild(script);
-        }*/
-    }
-
+    }, [url, id]);
 
 };
 

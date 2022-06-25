@@ -9,8 +9,7 @@ const VideoConferencing = ({id, auth_token} : WidgetOptions) => {
 
     useScript(Config.connector_script, Config.connector_script_id);
 
-    //const widget = React.createElement('bw:widget', { type: 'webrtc', id: id })
-    const widget = "<h1>Hello World</h1>"
+    const widget = React.createElement('bw:widget', { type: 'webrtc', id: id })
 
     useEffect(() => {
 
