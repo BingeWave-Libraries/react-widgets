@@ -1,3 +1,4 @@
 /// <reference types="react" />
-declare const Livestreaming: (id: string, auth_token: string | null) => JSX.Element;
+import WidgetOptions from '../../interfaces/WidgetOptions';
+declare const Livestreaming: ({ id, auth_token }: WidgetOptions) => JSX.Element;
 export default Livestreaming;

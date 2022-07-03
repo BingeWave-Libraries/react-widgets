@@ -1,70 +1,206 @@
-# Getting Started with Create React App
+# BingeWave React Widget Library
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## About The React Widget Library
+BingeWave is a Live Media as a Service (LMAAS), which means video, audio and augmented reality solutions are provided with minimal to no coding required. The video, audio and AR interfaces are delivered through widgets, we are embeds that go directly inside a website or mobile to create the interface for the user. 
 
-## Available Scripts
+After the widget is implemented, the interface can be modified through our no-code builder. This library will be for implementing those widgets into React. Please visit the React Native repo for a mobile implementation.
 
-In the project directory, you can run:
+## Installation
+This library is designed for React projects. To install, on your command line run the following in your React root folder to add to your package.json:
 
-### `npm start`
+`npm install bingewave-react-widgets --save`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## How To Implement The Widgets
+For each widget to function properly, an id of a live event is required. Every video, audio and AR session in BingeWave is considered a live event. To obtain an event ID, you must have registered for an [organizer account here](https://developers.bingewave.com/organizers).
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Once you have organizer you can either:
 
-### `npm test`
+ 1. Read the documentation to create a live event and return the id
+ 2. Use one the libraries like the React API to create a live event and retrieve the id.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+After the id from the live event is retrieved, you can use it to create a variety of widgets.
 
-### `npm run build`
+### Video Conferencing Widget
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+The video conferencing widget is when one or more users join a video call. Example use cases can be 1:1 coaching calls, a live shopping session one or multiple participants, or even virtual classroom settings with a large number of people.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+To implement the widget, first it must be imported:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+`import { VideoConferencing } from "bingewave-react-widgets";`
 
-### `npm run eject`
+Afterwards, the live event id is placed into the widget, which will create the interface on-screen.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+`<VideoConferencing id={some_event_id} />`
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+A more complete pseudo code example of the widget in use with React API looks something similar to the below. You will have to have your auth token and organizer id to effectively use.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+```
+import { VideoConferencing } from  "bingewave-react-widgets";
+import { Events, Config } from  "bingewave-react-api";
+import  React, { useEffect, useState } from  "react";
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+export  default  function  ExampleComponent() {
 
-## Learn More
+	const [widget, setWidget] = useState(false);
+	
+	useEffect(() => {
+	    loadDataOnlyOnce();
+	}, []);
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+	function createInterface() {
+		
+		Config.setAuthToken('some_auth_token');
+		
+		let  data = {
+			type:  7,
+			organizer_id:  'an_organizer_id'
+		};
+	
+		Events.createEvent(data).then(response  => {
+			if (response.status == "success") {
+				setWidget(<VideoConferencing  id={response.data.id}  />);
+			}
+		}).catch(error  => {
+			console.log(error);
+		});
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+	}
 
-### Code Splitting
+	return (
+		<>
+			{widget}
+		</>
+	);
+}
+```
+### Broadcasting Widget
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+The broadcasting widget is used to take a video conferencing session between one or more users, and broadcast to a large group of watchers. These watchers will not be able to be part of the video but can watch the live experience.
 
-### Analyzing the Bundle Size
+To implement the widget, first it must be imported:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+`import { Broadcasting } from "bingewave-react-widgets";`
 
-### Making a Progressive Web App
+Afterwards, the live event id is placed into the widget, which will create the interface on-screen.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+`<Broadcasting id={some_event_id} />`
 
-### Advanced Configuration
+A more complete pseudo code example of the widget in use with React API looks something similar to the below. You will have to have your auth token and organizer id to effectively use.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+```
+import { Broadcasting } from  "bingewave-react-widgets";
+import { Events, Config } from  "bingewave-react-api";
+import  React, { useEffect, useState } from  "react";
 
-### Deployment
+export  default  function  ExampleComponent() {
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+	const [widget, setWidget] = useState(false);
+	
+	useEffect(() => {
+	    loadDataOnlyOnce();
+	}, []);
 
-### `npm run build` fails to minify
+	function createInterface() {
+		
+		Config.setAuthToken('some_auth_token');
+		
+		let  data = {
+			type:  7,
+			organizer_id:  'an_organizer_id'
+		};
+	
+		Events.createEvent(data).then(response  => {
+			if (response.status == "success") {
+				setWidget(<Broadcasting  id={response.data.id}  />);
+			}
+		}).catch(error  => {
+			console.log(error);
+		});
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+	}
+
+	return (
+		<>
+			{widget}
+		</>
+	);
+}
+```
+
+### Live Streaming Widget
+
+The live streaming widget is used to a show livestream of a live event. Live events can be an input from an RTMP Stream, and input from a video camera source, or even showing pre-recorded video content like a movie or a class.
+
+To implement the widget, first it must be imported:
+
+`import { Livestreaming } from "bingewave-react-widgets";`
+
+Afterwards, the live event id is placed into the widget, which will create the interface on-screen.
+
+`<Livestreaming id={some_event_id} />`
+
+A more complete pseudo code example of the widget in use with React API looks something similar to the below. You will have to have your auth token and organizer id to effectively use.
+
+```
+import { Livestreaming } from  "bingewave-react-widgets";
+import { Events, Config } from  "bingewave-react-api";
+import  React, { useEffect, useState } from  "react";
+
+export  default  function  ExampleComponent() {
+
+	const [widget, setWidget] = useState(false);
+	
+	useEffect(() => {
+	    loadDataOnlyOnce();
+	}, []);
+
+	function createInterface() {
+		
+		Config.setAuthToken('some_auth_token');
+		
+		let  data = {
+			type:  7,
+			organizer_id:  'an_organizer_id'
+		};
+	
+		Events.createEvent(data).then(response  => {
+			if (response.status == "success") {
+				setWidget(<Livestreaming  id={response.data.id}  />);
+			}
+		}).catch(error  => {
+			console.log(error);
+		});
+
+	}
+
+	return (
+		<>
+			{widget}
+		</>
+	);
+}
+```
+
+## Tutorials
+
+To better understand the use of various widgets in different circumstances, the auth tokens and interface design, here are [several tutorials](https://developers.bingewave.com/tutorials) on various topics:
+
+ -  [How To Authenticate With JSON Web Tokens For Interactive Live Streams](https://medium.com/bingewave/how-to-authenticate-with-json-web-tokens-for-interactive-live-streams-61dd2675b3e6)
+ - [Creating A Live Broadcast Web and Mobile App With React & React Native](https://medium.com/bingewave/creating-a-live-broadcast-web-and-mobile-app-135e451fec36)
+ - [How To Use No Code To Design The Interfaces Once The Widgets Are Embedded](https://medium.com/bingewave/how-to-develop-video-conferencing-live-streaming-app-with-minimal-coding-2458ff1ee7a1)
+
+## Building The Library
+
+If at any point you need to compile the library, you can perform what is known a rollup. If the packages are not installed, be sure to install the development packages.
+
+`npm install --save-dev rollup typescript`
+
+Afterwards in the root directory, run the following commands to perform a rollup, which will compile the code into the dist folder:
+
+`npm run publish`
+
+And finally if you have access, you can deploy the code to npm.
+
+`npm publish --access public`
+
+

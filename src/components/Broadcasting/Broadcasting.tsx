@@ -3,8 +3,9 @@ import React, { useEffect } from 'react';
 import useScript from '../../util/useScript';
 import Config from '../../constants/Config';
 import Widgets from '../../util/Widgets';
+import WidgetOptions from '../../interfaces/WidgetOptions';
 
-const Broadcasting = (id : string, auth_token : string | null) => {
+const Broadcasting = ({id, auth_token} : WidgetOptions) => {
 
     useScript(Config.connector_script, Config.connector_script_id);
 

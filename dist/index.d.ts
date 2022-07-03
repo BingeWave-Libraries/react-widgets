@@ -6,9 +6,9 @@ interface WidgetOptions {
 
 declare const VideoConferencing: ({ id, auth_token }: WidgetOptions) => JSX.Element;
 
-declare const Livestreaming: (id: string, auth_token: string | null) => JSX.Element;
+declare const Livestreaming: ({ id, auth_token }: WidgetOptions) => JSX.Element;
 
-declare const Broadcasting: (id: string, auth_token: string | null) => JSX.Element;
+declare const Broadcasting: ({ id, auth_token }: WidgetOptions) => JSX.Element;
 
 declare global {
     interface Window {

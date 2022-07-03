@@ -62,5 +62,10 @@
     "rollup-plugin-styles": "^4.0.0",
     "rollup-plugin-terser": "^7.0.2",
     "typescript": "^4.7.4"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+git@github.com:BingeWave-Libraries/react-widgets.git"
+  },
+  "homepage": "https://github.com/BingeWave-Libraries/react-widgets#readme"
 }
