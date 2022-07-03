@@ -1,6 +1,5 @@
 # BingeWave React Widget Library
 
-## About The React Widget Library
 BingeWave is a Live Media as a Service (LMAAS), which means video, audio and augmented reality solutions are provided with minimal to no coding required. The video, audio and AR interfaces are delivered through widgets, we are embeds that go directly inside a website or mobile to create the interface for the user. 
 
 After the widget is implemented, the interface can be modified through our no-code builder. This library will be for implementing those widgets into React. Please visit the React Native repo for a mobile implementation.
@@ -44,7 +43,7 @@ export  default  function  ExampleComponent() {
 	const [widget, setWidget] = useState(false);
 	
 	useEffect(() => {
-	    loadDataOnlyOnce();
+	    createInterface();
 	}, []);
 
 	function createInterface() {
@@ -97,7 +96,7 @@ export  default  function  ExampleComponent() {
 	const [widget, setWidget] = useState(false);
 	
 	useEffect(() => {
-	    loadDataOnlyOnce();
+	    createInterface();
 	}, []);
 
 	function createInterface() {
@@ -151,7 +150,7 @@ export  default  function  ExampleComponent() {
 	const [widget, setWidget] = useState(false);
 	
 	useEffect(() => {
-	    loadDataOnlyOnce();
+	    createInterface();
 	}, []);
 
 	function createInterface() {

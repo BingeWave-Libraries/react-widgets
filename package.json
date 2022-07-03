@@ -1,6 +1,6 @@
 {
   "name": "bingewave-react-widgets",
-  "version": "0.1.8",
+  "version": "0.1.9",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
   "private": false,
@@ -67,5 +67,13 @@
     "type": "git",
     "url": "git+git@github.com:BingeWave-Libraries/react-widgets.git"
   },
-  "homepage": "https://github.com/BingeWave-Libraries/react-widgets#readme"
+  "homepage": "https://github.com/BingeWave-Libraries/react-widgets#readme",
+  "keywords": [
+    "live streaming",
+    "video",
+    "live video",
+    "video conferencing",
+    "video app",
+    "widgets"
+  ]
 }
