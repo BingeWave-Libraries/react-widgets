@@ -1,16 +1,16 @@
 # BingeWave React Widget Library
 
-BingeWave is a Live Media as a Service (LMAAS), which means video, audio and augmented reality solutions are provided with minimal to no coding required. The video, audio and AR interfaces are delivered through widgets, we are embeds that go directly inside a website or mobile to create the interface for the user. 
+BingeWave is a Live Media as a Service (LMAAS), which means video, audio and augmented reality solutions are provided with minimal to no coding required. The video, audio and AR interfaces are delivered through widgets, which are embeds that go directly inside a website or mobile app to create the interface for the user. 
 
-After the widget is implemented, the interface can be modified through our no-code builder. This library will be for implementing those widgets into React. Please visit the React Native repo for a mobile implementation.
+After the widget is implemented, the interface can be modified through a no-code builder. This library will cover how to implement those widgets into React. Please visit the React Native repo for a mobile implementation.
 
 ## Installation
-This library is designed for React projects. To install, on your command line run the following in your React root folder to add to your package.json:
+This library is designed for React projects. To install, on your command line run the following in your React root folder:
 
 `npm install bingewave-react-widgets --save`
 
 ## How To Implement The Widgets
-For each widget to function properly, an id of a live event is required. Every video, audio and AR session in BingeWave is considered a live event. To obtain an event ID, you must have registered for an [organizer account here](https://developers.bingewave.com/organizers).
+For each widget to function properly, an id of a live event is required. Every video, audio and AR session on BingeWave is considered a live event. To obtain an event ID, you must have registered for an [organizer account here](https://developers.bingewave.com/organizers).
 
 Once you have organizer you can either:
 
@@ -21,7 +21,7 @@ After the id from the live event is retrieved, you can use it to create a variet
 
 ### Video Conferencing Widget
 
-The video conferencing widget is when one or more users join a video call. Example use cases can be 1:1 coaching calls, a live shopping session one or multiple participants, or even virtual classroom settings with a large number of people.
+The video conferencing widget is when one or more users join a video call. Example use cases can be 1:1 coaching calls, a live shopping session with one or multiple participants, or even virtual classroom settings with a large number of people.
 
 To implement the widget, first it must be imported:
 
@@ -31,7 +31,7 @@ Afterwards, the live event id is placed into the widget, which will create the i
 
 `<VideoConferencing id={some_event_id} />`
 
-A more complete pseudo code example of the widget in use with React API looks something similar to the below. You will have to have your auth token and organizer id to effectively use.
+A more complete pseudo code example of the widget being used in conjuction with [React API](https://www.npmjs.com/package/bingewave-react-api) looks something similar to the below. You will have to have your auth token and organizer id to effectively use.
 
 ```
 import { VideoConferencing } from  "bingewave-react-widgets";
@@ -67,14 +67,14 @@ export  default  function  ExampleComponent() {
 
 	return (
 		<>
-			{widget}
+		  {widget}
 		</>
 	);
 }
 ```
 ### Broadcasting Widget
 
-The broadcasting widget is used to take a video conferencing session between one or more users, and broadcast to a large group of watchers. These watchers will not be able to be part of the video but can watch the live experience.
+The broadcasting widget is used to take a video conferencing session between one or more users, and broadcast to a large group of watchers. These watchers will not be able to be part in the video conferencing but can watch the live experience.
 
 To implement the widget, first it must be imported:
 
@@ -84,7 +84,7 @@ Afterwards, the live event id is placed into the widget, which will create the i
 
 `<Broadcasting id={some_event_id} />`
 
-A more complete pseudo code example of the widget in use with React API looks something similar to the below. You will have to have your auth token and organizer id to effectively use.
+A more complete pseudo code example of the widget in use with [React API](https://www.npmjs.com/package/bingewave-react-api) looks something similar to the below. You will have to have your auth token and organizer id to effectively use.
 
 ```
 import { Broadcasting } from  "bingewave-react-widgets";
@@ -120,7 +120,7 @@ export  default  function  ExampleComponent() {
 
 	return (
 		<>
-			{widget}
+		  {widget}
 		</>
 	);
 }
@@ -128,7 +128,7 @@ export  default  function  ExampleComponent() {
 
 ### Live Streaming Widget
 
-The live streaming widget is used to a show livestream of a live event. Live events can be an input from an RTMP Stream, and input from a video camera source, or even showing pre-recorded video content like a movie or a class.
+The live streaming widget is used to a show live stream of a live event. Live events such as conferences, concerts, sporting events and other types can be an input from an RTMP Stream from various sources such as camera feeds, computer, and even other streaming services. Live events can also showcase pre-recorded video content like a movie or a class.
 
 To implement the widget, first it must be imported:
 
@@ -138,7 +138,7 @@ Afterwards, the live event id is placed into the widget, which will create the i
 
 `<Livestreaming id={some_event_id} />`
 
-A more complete pseudo code example of the widget in use with React API looks something similar to the below. You will have to have your auth token and organizer id to effectively use.
+A more complete pseudo code example of the widget in use with[React API](https://www.npmjs.com/package/bingewave-react-api) looks something similar to the below. You will have to have your auth token and organizer id to effectively use.
 
 ```
 import { Livestreaming } from  "bingewave-react-widgets";
@@ -174,7 +174,7 @@ export  default  function  ExampleComponent() {
 
 	return (
 		<>
-			{widget}
+		  {widget}
 		</>
 	);
 }
