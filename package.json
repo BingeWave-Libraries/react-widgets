@@ -1,6 +1,6 @@
 {
   "name": "bingewave-react-widgets",
-  "version": "0.2.7",
+  "version": "0.2.8",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
   "private": false,
@@ -30,8 +30,8 @@
     ]
   },
   "peerDependencies": {
-    "react": "^16.8.1",
-    "react-dom": "^16.8.1",
+    "react": "^16.8.1 || ^17.0.0 || ^18.0.0",
+    "react-dom": "^16.8.1 || ^17.0.0 || ^18.0.0",
     "react-scripts": "^5.0.1",
     "web-vitals": "^2.1.4"
   },
