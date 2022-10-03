@@ -9,6 +9,17 @@ const Livestreaming = ({id, auth_token} : WidgetOptions) => {
 
     useScript(Config.connector_script, Config.connector_script_id);
 
+    let current_widget = document.getElementById(id);
+
+    if(current_widget) {
+        
+        let parent = current_widget.parentNode;
+        
+        if(parent) {
+            parent.removeChild(current_widget);
+        }
+    }
+
     const widget = React.createElement('bw:widget', { type: 'stream', id: id })
 
     useEffect(() => {
