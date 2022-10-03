@@ -22,7 +22,9 @@ const Broadcasting = ({id, auth_token} : WidgetOptions) => {
 
     const widget = React.createElement('bw:widget', { type: 'broadcast', id: id })
 
-    Widgets.loadWidgets();
+    setTimeout(() => {
+        Widgets.loadWidgets();
+    }, 1500);
 
     useEffect(() => {
 

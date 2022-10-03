@@ -22,7 +22,10 @@ const Livestreaming = ({id, auth_token} : WidgetOptions) => {
 
     const widget = React.createElement('bw:widget', { type: 'stream', id: id })
 
-    Widgets.loadWidgets();
+    setTimeout(() => {
+        console.log("Timed Load");
+        Widgets.loadWidgets();
+    }, 1500);
 
     useEffect(() => {
 
