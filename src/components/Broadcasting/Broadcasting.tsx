@@ -35,7 +35,13 @@ const Broadcasting = ({id, auth_token} : WidgetOptions) => {
 
                 //Reload the widgets if it hasn't be done already
                 Widgets.loadWidgets();
-            })
+            });
+
+            console.log("Loading Widget");
+            //Double checking for loaded
+            setTimeout(() => {
+                Widgets.loadWidgets();
+            }, 5000);
         }
 
     })

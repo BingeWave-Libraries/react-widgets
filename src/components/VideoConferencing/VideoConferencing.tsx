@@ -12,7 +12,7 @@ const VideoConferencing = ({id, auth_token} : WidgetOptions) => {
     let current_widget = document.getElementById(id);
 
     if(current_widget) {
-        
+
         let parent = current_widget.parentNode;
         
         if(parent) {
@@ -35,7 +35,13 @@ const VideoConferencing = ({id, auth_token} : WidgetOptions) => {
 
                 //Reload the widgets if it hasn't be done already
                 Widgets.loadWidgets();
-            })
+            });
+
+            console.log("Loading Widget");
+            //Double checking for loaded
+            setTimeout(() => {
+                Widgets.loadWidgets();
+            }, 5000);
         }
 
     })

@@ -196,7 +196,7 @@ If at any point you need to compile the library, you can perform what is known a
 
 Afterwards in the root directory, run the following commands to perform a rollup, which will compile the code into the dist folder:
 
-`npm run publish`
+`npm run build`
 
 And finally if you have access, you can deploy the code to npm.
 
