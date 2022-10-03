@@ -22,6 +22,8 @@ const Broadcasting = ({id, auth_token} : WidgetOptions) => {
 
     const widget = React.createElement('bw:widget', { type: 'broadcast', id: id })
 
+    Widgets.loadWidgets();
+
     useEffect(() => {
 
         let script = document.getElementById(Config.connector_script_id) as HTMLElement | null;

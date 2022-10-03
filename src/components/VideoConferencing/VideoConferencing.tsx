@@ -5,28 +5,30 @@ import Config from '../../constants/Config';
 import Widgets from '../../util/Widgets';
 import WidgetOptions from '../../interfaces/WidgetOptions';
 
-const VideoConferencing = ({id, auth_token} : WidgetOptions) => {
+const VideoConferencing = ({ id, auth_token }: WidgetOptions) => {
 
     useScript(Config.connector_script, Config.connector_script_id);
 
     let current_widget = document.getElementById(id);
 
-    if(current_widget) {
+    if (current_widget) {
 
         let parent = current_widget.parentNode;
-        
-        if(parent) {
+
+        if (parent) {
             parent.removeChild(current_widget);
         }
     }
 
-    const widget = React.createElement('bw:widget', { type: 'webrtc', id: id })
+    const widget = React.createElement('bw:widget', { type: 'webrtc', id: id });
 
+    Widgets.loadWidgets();
+   
     useEffect(() => {
 
         let script = document.getElementById(Config.connector_script_id) as HTMLElement | null;
 
-        if(script){
+        if (script) {
 
             script.addEventListener('load', () => {
 

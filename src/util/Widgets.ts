@@ -10,13 +10,21 @@ window.BingewaveConnector = window.BingewaveConnector || {};
 const Widgets = {
     init : (auth_token :string | null ) => {
 
-       window.BingewaveConnector.init({auth_token : auth_token});
+        if(window.BingewaveConnector && typeof window.BingewaveConnector.init === "function") {
+            window.BingewaveConnector.init({auth_token : auth_token});
+        }
     },
     loadWidgets : () => {
-        window.BingewaveConnector.parseTags();
+
+        if(window.BingewaveConnector && typeof window.BingewaveConnector.parseTags === "function") {
+            window.BingewaveConnector.parseTags();
+        }
     },
     setAuthToken : (token : string | null) => {
-        window.BingewaveConnector.setAuthToken(token);
+
+        if(window.BingewaveConnector && typeof window.BingewaveConnector.setAuthToken === "function") {
+            window.BingewaveConnector.setAuthToken(token);
+        }
     }
 }
 
